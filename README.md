@@ -25,5 +25,9 @@ exported, public copy:
 - Photos and letters uploaded on claude.ai are **not** included yet; they stay
   on claude.ai.
 
-To update the website, export the data again and replace the `public-data`
-block in `index.html` and `data/public-data.json`, then commit.
+To update the website, export the claude.ai database (issues/, authorityIssues/,
+config/directory.json) to a folder and run:
+
+    python3 scripts/build.py <export-folder>
+
+then commit and push. GitHub Pages republishes within a minute or two.

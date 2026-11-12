@@ -269,8 +269,26 @@
       "title": "Table and Chairs for each Guard in each block",
       "updatedAt": "2026-11-12T04:58:07.519Z",
       "id": "qnth2g0l3bzyto7hti2q"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T05:27:10.037Z",
+      "dueDate": "2026-11-19",
+      "location": "Society",
+      "notes": "",
+      "num": 11,
+      "portfolio": "",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Parking guidelines",
+      "updatedAt": "2026-11-12T05:27:10.037Z",
+      "id": "yc04j20ntvj4t9lsb1ht"
     }
   ],
   "auth": [],
-  "publishedAt": "2026-11-12T05:25:57.387999+00:00"
+  "publishedAt": "2026-11-12T05:31:09.792000+00:00"
 }

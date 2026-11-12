@@ -19,7 +19,7 @@
 :root,:root[data-theme]{color-scheme:light}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--body)}
-.wrap{max-width:1240px;margin:0 auto;padding:28px 20px 60px;display:grid;gap:20px}
+.wrap{width:100%;margin:0;padding:24px clamp(16px,3vw,40px) 48px;display:grid;gap:20px;min-height:100vh;align-content:start}
 button,select,input,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 a{color:var(--accent)}
@@ -223,6 +223,7 @@ textarea{resize:vertical;min-height:70px}
       <span class="badge" id="roleBadge" data-admin="false">View only</span>
       <button class="btn" id="dirBtn" type="button" hidden>Members &amp; lists</button>
       <button class="btn" id="pubBtn" type="button" hidden>Publish for public</button>
+      <button class="btn" id="loginBtn" type="button">Admin login</button>
       <button class="linkbtn" id="logoutBtn" type="button" hidden>Log out</button>
     </div>
   </header>
@@ -237,7 +238,6 @@ textarea{resize:vertical;min-height:70px}
   <main id="view"></main>
   <footer class="sitefoot">
     <span>RWA · Jasola Skyline Towers · Pocket 9B, Jasola, New Delhi</span>
-    <button class="linkbtn" id="loginBtn" type="button" style="font-size:12px;padding:0">RWA admin login</button>
   </footer>
 </div>
 <div class="tip" id="tip" hidden></div>
@@ -1031,7 +1031,7 @@ async function start(){
   render();
   if(!window.claude?.use){ // standalone website copy: admins edit on claude.ai
     const l=$("#loginBtn"), link=document.createElement("a");
-    link.href=ADMIN_URL; link.target="_blank"; link.rel="noopener"; link.textContent="RWA admin login"; link.style.fontSize="12px";
+    link.id="loginBtn"; link.href=ADMIN_URL; link.target="_blank"; link.rel="noopener"; link.className="btn"; link.textContent="Admin login ↗"; link.title="Opens the admin page on claude.ai, where admins add and edit issues";
     l.replaceWith(link);
   }
   const db = window.claude?.use ? await window.claude.use("db") : null;
