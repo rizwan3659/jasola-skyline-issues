@@ -123,7 +123,7 @@ tbody tr[data-id]:hover td{background:var(--surface-2)}
 .due small{display:block;font:400 12px/1.3 var(--body);color:var(--muted)}
 .due.late small{color:var(--late);font-weight:600}
 .prio{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.06em}
-.prio[data-p="High"]{color:var(--late)} .prio[data-p="Medium"]{color:var(--open)} .prio[data-p="Low"]{color:var(--muted)}
+.prio[data-p="Highest"]{color:#fff;background:var(--late);padding:3px 6px;border-radius:4px} .prio[data-p="High"]{color:var(--late)} .prio[data-p="Medium"]{color:var(--open)} .prio[data-p="Low"]{color:var(--muted)}
 .empty{padding:40px 20px;text-align:center;color:var(--muted)}
 
 .pill,select.status{display:inline-block;border:0;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:600;white-space:nowrap}
@@ -258,7 +258,7 @@ textarea{resize:vertical;min-height:70px}
       <div class="field"><label for="iRwa" id="iRwaLabel">Assigned RWA member</label><select id="iRwa"></select></div>
       <div class="field"><label for="iCommittee">Committee member (resident)</label><select id="iCommittee"></select></div>
       <div class="field"><label for="iPriority">Priority</label>
-        <select id="iPriority"><option>High</option><option selected>Medium</option><option>Low</option></select></div>
+        <select id="iPriority"><option>Highest</option><option>High</option><option selected>Medium</option><option>Low</option></select></div>
       <div class="field"><label for="iStatus">Status</label><select id="iStatus"></select></div>
       <div class="field"><label for="iRaisedOn">Raised on</label><input id="iRaisedOn" type="date" required></div>
       <div class="field"><label for="iDue">Target date to resolve</label><input id="iDue" type="date" required>
@@ -356,7 +356,7 @@ textarea{resize:vertical;min-height:70px}
 
 <script>
 const $ = s => document.querySelector(s);
-const DEFAULT_AUTHORITIES = ["DDA ELD-1","DDA EMD-7","DDA Housing","DDA Horticulture","MCD","PWD","Traffic Police","Delhi Police"];
+const DEFAULT_AUTHORITIES = ["DDA ELD-1","DDA EMD-7","DDA Housing","DDA Horticulture","MCD","PWD","Traffic Police","Delhi Police","Park","MLA / Councillor"];
 const MODES = {
   rwa:{ key:"rwa", collection:"issues", prefix:"ISS", title:"RWA issues",
         statuses:["Open","In Progress","On Hold","Resolved","Closed"], group:"portfolio", groupLabel:"Portfolio", rwaLabel:"Assigned RWA member" },
@@ -367,7 +367,7 @@ const TONE = {"Not initiated":"idle","Open":"open","Filed":"open","In Progress":
 const DONE = new Set(["Resolved","Closed"]);
 const CHART = {"Not initiated":"#0E8C8C","Open":"#C27A00","Filed":"#C27A00","On Hold":"#8E4EC6","Awaiting reply":"#8E4EC6","Escalated":"#C62828","In Progress":"#1E6FD0","Resolved":"#2E8B3E","Closed":"#7E8A93"};
 const CHART_ORDER = ["Not initiated","Open","Filed","On Hold","Awaiting reply","Escalated","In Progress","Resolved","Closed"];
-const PRIO = {High:0,Medium:1,Low:2};
+const PRIO = {Highest:-1,High:0,Medium:1,Low:2};
 const STEP_KINDS = {
   rwa:["Work assigned","Vendor contacted","Quotation received","Site visit","Work started","Work completed","Resident informed","Photo update","Other"],
   auth:["Complaint filed","Letter sent to authority","Letter received from authority","Letter / complaint by resident","Follow-up call","Reminder sent","Site inspection","Meeting with officer","Escalated","Work started","Work completed","Photo update","Other"]
