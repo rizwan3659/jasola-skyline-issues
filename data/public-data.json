@@ -1,0 +1,276 @@
+{
+  "dir": {
+    "society": "",
+    "bearers": [
+      {
+        "name": "Mr. Noorul Haque",
+        "role": "President"
+      },
+      {
+        "name": "Mr. Mirza Suzat Beg",
+        "role": "Vice President"
+      },
+      {
+        "name": "Mrs. Irum Khan",
+        "role": "General Secretary"
+      },
+      {
+        "name": "Mr. Mohd Salamuddin",
+        "role": "Joint Secretary"
+      },
+      {
+        "name": "Mr. Mohd Jazib Khan",
+        "role": "Joint Treasurer"
+      },
+      {
+        "name": "Mrs. Seema Khan",
+        "role": "Executive Member, Block 4"
+      },
+      {
+        "name": "Mr. Vincent Dsouza",
+        "role": "Executive Member, Block 4"
+      },
+      {
+        "name": "Mr. Anil Kumar Mishra",
+        "role": "Executive Member, Block 3"
+      },
+      {
+        "name": "Mr. Anup Chandra Doval",
+        "role": "Executive Member, Block 2"
+      },
+      {
+        "name": "Mrs. Farahat Fatima",
+        "role": "Executive Member, Block 1"
+      }
+    ],
+    "portfolios": [
+      {
+        "member": "",
+        "name": "Security"
+      },
+      {
+        "member": "",
+        "name": "Maintenance & Repairs"
+      },
+      {
+        "member": "",
+        "name": "Housekeeping"
+      },
+      {
+        "member": "",
+        "name": "Water & Electricity"
+      },
+      {
+        "member": "",
+        "name": "Lifts"
+      },
+      {
+        "member": "",
+        "name": "Parking"
+      },
+      {
+        "member": "",
+        "name": "Gardening & Landscaping"
+      },
+      {
+        "member": "",
+        "name": "Finance & Accounts"
+      }
+    ],
+    "authorities": [
+      "DDA ELD-1",
+      "DDA EMD-7",
+      "DDA Housing",
+      "DDA Horticulture",
+      "MCD",
+      "PWD",
+      "Traffic Police",
+      "Delhi Police"
+    ],
+    "committee": []
+  },
+  "rwa": [
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:59:28.616Z",
+      "dueDate": "2026-11-30",
+      "location": "Society",
+      "notes": "",
+      "num": 6,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Unauthroized Vehicles inside premises",
+      "updatedAt": "2026-11-12T05:00:57.959Z",
+      "id": "19g2xxnacut0n0mq8qla"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T05:06:56.432Z",
+      "dueDate": "2026-11-30",
+      "location": "All Blocks",
+      "notes": "",
+      "num": 10,
+      "portfolio": "Finance & Accounts",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Pending CAM charges",
+      "updatedAt": "2026-11-12T05:11:53.492Z",
+      "id": "8fxho4imjqi55ay89pdp"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:53:03.128Z",
+      "dueDate": "2026-11-30",
+      "location": "All Blocks",
+      "notes": "",
+      "num": 1,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Cameras on all lifts in all block",
+      "updatedAt": "2026-11-12T04:56:46.543Z",
+      "id": "b0vriyulvdq46i7jrye1"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T05:06:03.625Z",
+      "dueDate": "2026-11-19",
+      "location": "",
+      "notes": "",
+      "num": 9,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Guards at front of gate 1 and gate 2",
+      "updatedAt": "2026-11-12T05:06:03.625Z",
+      "id": "btxlx9jsksnszkert5yo"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:58:50.911Z",
+      "dueDate": "2026-11-30",
+      "location": "Society",
+      "notes": "",
+      "num": 5,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "RFID implementation",
+      "updatedAt": "2026-11-12T05:05:03.770Z",
+      "id": "effzrc7tdhnx2xq91ins"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T05:02:43.678Z",
+      "dueDate": "2026-11-19",
+      "location": "",
+      "notes": "",
+      "num": 8,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Concertina razor wire coils, anti-climb wall spikes, and traditional barbed wire on both gates",
+      "updatedAt": "2026-11-12T05:04:19.435Z",
+      "id": "jla0t4x4yl7rbd24052o"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T05:00:19.215Z",
+      "dueDate": "2026-12-31",
+      "location": "Society",
+      "notes": "",
+      "num": 7,
+      "portfolio": "Finance & Accounts",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Account Signatories",
+      "updatedAt": "2026-11-12T05:07:17.992Z",
+      "id": "jq1tkrs5hontszsugonn"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:56:30.944Z",
+      "dueDate": "2026-11-30",
+      "location": "Gate1 and Gate2",
+      "notes": "",
+      "num": 3,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Cameras on Gate 1 and Gate2",
+      "updatedAt": "2026-11-12T05:04:53.507Z",
+      "id": "l46vfqi5h9qsv2by90go"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:54:45.248Z",
+      "dueDate": "2026-11-19",
+      "location": "Block4",
+      "notes": "",
+      "num": 2,
+      "portfolio": "Gardening & Landscaping",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Undulations in garden front of block4",
+      "updatedAt": "2026-11-12T04:57:51.784Z",
+      "id": "qk6d84n49cxfd0l00w2a"
+    },
+    {
+      "committeeMember": "",
+      "createdAt": "2026-11-12T04:57:36.712Z",
+      "dueDate": "2026-11-19",
+      "location": "All gates",
+      "notes": "",
+      "num": 4,
+      "portfolio": "Security",
+      "priority": "High",
+      "raisedOn": "2026-11-12",
+      "resolvedOn": "",
+      "rwaMember": "",
+      "status": "Open",
+      "steps": [],
+      "title": "Table and Chairs for each Guard in each block",
+      "updatedAt": "2026-11-12T04:58:07.519Z",
+      "id": "qnth2g0l3bzyto7hti2q"
+    }
+  ],
+  "auth": [],
+  "publishedAt": "2026-11-12T05:25:57.387999+00:00"
+}
