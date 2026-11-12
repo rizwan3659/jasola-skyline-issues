@@ -261,7 +261,8 @@ textarea{resize:vertical;min-height:70px}
         <select id="iPriority"><option>High</option><option selected>Medium</option><option>Low</option></select></div>
       <div class="field"><label for="iStatus">Status</label><select id="iStatus"></select></div>
       <div class="field"><label for="iRaisedOn">Raised on</label><input id="iRaisedOn" type="date" required></div>
-      <div class="field"><label for="iDue">Target date to resolve</label><input id="iDue" type="date" required></div>
+      <div class="field"><label for="iDue">Target date to resolve</label><input id="iDue" type="date" required>
+        <label class="check" style="font-size:12px"><input type="checkbox" id="iNoDue"> No target date</label></div>
       <div class="field full"><label for="iNotes">Summary</label><textarea id="iNotes" maxlength="2000" placeholder="What the problem is and what outcome the RWA wants"></textarea></div>
     </div>
     <footer>
@@ -493,7 +494,8 @@ function statusCell(i){
   if(!state.canWrite) return `<span class="pill" data-tone="${TONE[i.status]||"closed"}">${esc(i.status)}</span>`;
   return `<select class="status" data-id="${esc(i.id)}" data-tone="${TONE[i.status]||"closed"}" aria-label="Status of ${esc(code(mode,i.num))}">${MODES[mode].statuses.map(s=>`<option ${s===i.status?"selected":""}>${s}</option>`).join("")}</select>`;
 }
-function dueCell(i){return `<div class="due ${isLate(i)?"late":""}">${fmtDate(i.dueDate)}<small>${esc(timeline(i))}</small></div>`}
+function dueText(i){return i.dueDate?fmtDate(i.dueDate):"No target date"}
+function dueCell(i){return `<div class="due ${isLate(i)?"late":""}">${i.dueDate?fmtDate(i.dueDate):`<span class="meta">No target date</span>`}<small>${esc(timeline(i))}</small></div>`}
 function lastStep(i){const s=(i.steps||[]).slice().sort((a,b)=>(b.date||"").localeCompare(a.date||""))[0];return s?`<div>${esc(s.kind)}</div><div class="meta">${fmtDate(s.date)}</div>`:`<span class="meta">No steps yet</span>`}
 
 function filtered(){
@@ -660,7 +662,7 @@ function detailHTML(i){
           ${fact("Location",esc(i.location||""))}
           ${state.canWrite?fact("Raised by",esc(i.raisedBy||"")):""}
           ${fact("Raised on",fmtDate(i.raisedOn))}
-          ${fact("Target",fmtDate(i.dueDate)+(timeline(i)?`<div class="meta">${esc(timeline(i))}</div>`:""))}
+          ${fact("Target",dueText(i)+(timeline(i)?`<div class="meta">${esc(timeline(i))}</div>`:""))}
           ${fact(mode==="auth"?"RWA follow-up":"RWA member",esc(i.rwaMember?rwaLabel(i.rwaMember):"—"))}
           ${fact("Committee",esc(i.committeeMember||"—"))}
           ${fact("Priority",`<span class="prio" data-p="${esc(i.priority)}">${esc(i.priority||"")}</span>`)}
@@ -751,7 +753,7 @@ function openIssue(issue){
   $("#iRwaLabel").textContent=M.rwaLabel;
   $("#iTitle").value=i.title||""; $("#iLocation").value=i.location||""; $("#iRaisedBy").value=i.raisedBy||"";
   $("#iRef").value=i.complaintRef||""; $("#iOfficer").value=i.officer||"";
-  $("#iPriority").value=i.priority||"Medium"; $("#iRaisedOn").value=i.raisedOn||today(); $("#iDue").value=i.dueDate||"";
+  $("#iPriority").value=i.priority||"Medium"; $("#iRaisedOn").value=i.raisedOn||today(); $("#iDue").value=i.dueDate||""; setNoDue(!!issue && !i.dueDate);
   $("#iNotes").value=i.notes||"";
   fillSelect($("#iPortfolio"),portfolios(),{blank:"Choose portfolio",value:i.portfolio||""});
   fillSelect($("#iAuthority"),authorities(),{blank:"Choose authority",value:i.authority||""});
@@ -766,6 +768,12 @@ $("#iPortfolio").addEventListener("change",e=>{
   const p=state.dir.portfolios.find(p=>p.name===e.target.value);
   if(p&&p.member) fillSelect($("#iRwa"),rwaMembers(),{blank:"Choose RWA member",value:p.member,label:rwaLabel});
 });
+function setNoDue(on){
+  const due=$("#iDue"); $("#iNoDue").checked=on;
+  if(on){ due.dataset.prev=due.value||due.dataset.prev||""; due.value="" } else if(!due.value) due.value=due.dataset.prev||offset(state.mode==="auth"?30:7);
+  due.disabled=on; due.required=!on;
+}
+$("#iNoDue").addEventListener("change",e=>setNoDue(e.target.checked));
 $("#cancelBtn").addEventListener("click",()=>dlg.close());
 $("#issueForm").addEventListener("submit",async e=>{
   e.preventDefault();
@@ -776,7 +784,7 @@ $("#issueForm").addEventListener("submit",async e=>{
     num: prev?prev.num:Math.max(0,...list.map(i=>i.num||0))+1,
     title:$("#iTitle").value.trim(), location:$("#iLocation").value.trim(), raisedBy:$("#iRaisedBy").value.trim(),
     rwaMember:$("#iRwa").value, committeeMember:$("#iCommittee").value, priority:$("#iPriority").value,
-    raisedOn:$("#iRaisedOn").value, dueDate:due.value, status, notes:$("#iNotes").value.trim(),
+    raisedOn:$("#iRaisedOn").value, dueDate:$("#iNoDue").checked?"":due.value, status, notes:$("#iNotes").value.trim(),
     resolvedOn: DONE.has(status)?(prev?.resolvedOn||today()):"", steps: prev?.steps||[],
     createdAt: prev?.createdAt||new Date().toISOString(), updatedAt:new Date().toISOString()};
   if(mode==="auth"){ data.authority=$("#iAuthority").value; data.complaintRef=$("#iRef").value.trim(); data.officer=$("#iOfficer").value.trim() }
