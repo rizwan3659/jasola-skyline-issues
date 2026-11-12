@@ -5,8 +5,8 @@ compatibility_date = "2026-11-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "jasola-issues"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "93704867-7c53-443d-bcd4-df2a4b734627"
 
 [[kv_namespaces]]
 binding = "FILES"
-id = "00000000000000000000000000000000"
+id = "dacb2f0dd30b4b1184121137fb343030"

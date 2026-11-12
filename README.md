@@ -1,33 +1,35 @@
 # Jasola Skyline Towers – RWA Issue Register
 
-Public, read-only website listing society issues handled by the RWA and by
-authorities (DDA ELD-1, DDA EMD-7, DDA Housing, DDA Horticulture, MCD, PWD,
-Traffic Police, Delhi Police): status pie chart, owners, target dates, and
-the follow-up timeline for each issue.
+Live site: **https://jasola-skyline-issues.pages.dev/**
 
-## Files
+Lists society issues handled by the RWA and by authorities (DDA ELD-1, DDA EMD-7,
+DDA Housing, DDA Horticulture, MCD, PWD, Traffic Police, Delhi Police) with a status
+pie chart, owners, target dates, and a follow-up timeline with letters and GPS photos.
+Anyone can view it; RWA admins log in on the site to add and edit.
 
-| File | What it is |
+## How it's built (Cloudflare, free plan)
+
+| Path | What it is |
 |---|---|
-| `index.html` | The website. Self-contained; data is embedded in the `public-data` block. |
-| `data/public-data.json` | The same published data as plain JSON (for a future website or backup). |
-| `source.html` | The page source used by the admin version on claude.ai (no data embedded). |
-| `logo.png` | Society logo. |
+| `public/index.html` | The website (single page, no build step) |
+| `functions/api/[[path]].js` | API: public data, admin login, save issues/lists, uploads, password change |
+| `functions/files/[id].js` | Serves uploaded photos and letters |
+| `schema.sql` | D1 database tables |
+| `scripts/seed.py` | Builds seed SQL from a claude.ai export and sets the admin password |
+| `wrangler.toml` | Cloudflare bindings: D1 `DB` (jasola-issues), KV `FILES` |
 
-## How data gets here
+Security: the admin password is stored as a PBKDF2 hash in D1 and checked on the
+server; sessions are signed HttpOnly cookies (12 h); 10 wrong passwords in 15 minutes
+locks login for that IP. Public responses never include "Raised by" or steps marked
+admin-only.
 
-Admins add and edit issues in the admin version on claude.ai
-(https://claude.ai/artifact/CXHBgCJCco9oGovGmAuXWj), which has the password
-login, photo/letter uploads and the live database. This repository holds an
-exported, public copy:
+## Deploy a code change
 
-- Resident names ("Raised by") and steps marked *Admin only* are removed.
-- Photos and letters uploaded on claude.ai are **not** included yet; they stay
-  on claude.ai.
+    npx wrangler pages deploy --branch main
 
-To update the website, export the claude.ai database (issues/, authorityIssues/,
-config/directory.json) to a folder and run:
+## Local testing
 
-    python3 scripts/build.py <export-folder>
+    npx wrangler d1 execute jasola-issues --local --file schema.sql
+    npx wrangler pages dev public --d1 DB=93704867-7c53-443d-bcd4-df2a4b734627 --kv FILES
 
-then commit and push. GitHub Pages republishes within a minute or two.
+The root `index.html` only redirects the old GitHub Pages address to the live site.
