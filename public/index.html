@@ -7,6 +7,7 @@
 :root{
   --bg:#F7F9FB; --surface:#FFFFFF; --surface-2:#F1F5F9; --ink:#0F1E2B; --muted:#5B6B7A; --line:#E3E9EF;
   --accent:#095E97; --accent-ink:#FFFFFF; --accent-soft:#E6F0F8;
+  --idle:#0B6E6E; --idle-bg:#DDF1F1;
   --open:#A65F00; --open-bg:#FBEBD2;
   --prog:#1E5BA8; --prog-bg:#DCE8F8;
   --hold:#6A5A8C; --hold-bg:#ECE6F5;
@@ -129,6 +130,7 @@ tbody tr[data-id]:hover td{background:var(--surface-2)}
 select.status{appearance:none;padding-right:26px;cursor:pointer;
   background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
   background-position:calc(100% - 13px) 52%,calc(100% - 9px) 52%;background-size:4px 4px;background-repeat:no-repeat}
+[data-tone="idle"]{color:var(--idle);background-color:var(--idle-bg)}
 [data-tone="open"]{color:var(--open);background-color:var(--open-bg)}
 [data-tone="prog"]{color:var(--prog);background-color:var(--prog-bg)}
 [data-tone="hold"]{color:var(--hold);background-color:var(--hold-bg)}
@@ -358,12 +360,12 @@ const MODES = {
   rwa:{ key:"rwa", collection:"issues", prefix:"ISS", title:"RWA issues",
         statuses:["Open","In Progress","On Hold","Resolved","Closed"], group:"portfolio", groupLabel:"Portfolio", rwaLabel:"Assigned RWA member" },
   auth:{ key:"auth", collection:"authorityIssues", prefix:"AUTH", title:"Authority issues",
-        statuses:["Filed","Awaiting reply","In Progress","Escalated","Resolved","Closed"], group:"authority", groupLabel:"Authority", rwaLabel:"RWA member following up" }
+        statuses:["Not initiated","Filed","Awaiting reply","In Progress","Escalated","Resolved","Closed"], group:"authority", groupLabel:"Authority", rwaLabel:"RWA member following up" }
 };
-const TONE = {"Open":"open","Filed":"open","In Progress":"prog","On Hold":"hold","Awaiting reply":"hold","Escalated":"late","Resolved":"done","Closed":"closed"};
+const TONE = {"Not initiated":"idle","Open":"open","Filed":"open","In Progress":"prog","On Hold":"hold","Awaiting reply":"hold","Escalated":"late","Resolved":"done","Closed":"closed"};
 const DONE = new Set(["Resolved","Closed"]);
-const CHART = {"Open":"#C27A00","Filed":"#C27A00","On Hold":"#8E4EC6","Awaiting reply":"#8E4EC6","Escalated":"#C62828","In Progress":"#1E6FD0","Resolved":"#2E8B3E","Closed":"#7E8A93"};
-const CHART_ORDER = ["Open","Filed","On Hold","Awaiting reply","Escalated","In Progress","Resolved","Closed"];
+const CHART = {"Not initiated":"#0E8C8C","Open":"#C27A00","Filed":"#C27A00","On Hold":"#8E4EC6","Awaiting reply":"#8E4EC6","Escalated":"#C62828","In Progress":"#1E6FD0","Resolved":"#2E8B3E","Closed":"#7E8A93"};
+const CHART_ORDER = ["Not initiated","Open","Filed","On Hold","Awaiting reply","Escalated","In Progress","Resolved","Closed"];
 const PRIO = {High:0,Medium:1,Low:2};
 const STEP_KINDS = {
   rwa:["Work assigned","Vendor contacted","Quotation received","Site visit","Work started","Work completed","Resident informed","Photo update","Other"],
