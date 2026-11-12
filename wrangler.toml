@@ -1,0 +1,12 @@
+name = "jasola-skyline-issues"
+pages_build_output_dir = "public"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jasola-issues"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[[kv_namespaces]]
+binding = "FILES"
+id = "00000000000000000000000000000000"
